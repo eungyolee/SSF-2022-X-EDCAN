@@ -35,8 +35,7 @@ class LoginActivity : AppCompatActivity() {
         /* todo Mission 2 : 선택해온 registerBtn에 Click Evnet를 만들어서 회원가입 화면으로 이동해주세요
         *                   회원가입 화면은 RegisterActivity입니다.   */
         registerBtn.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
         // todo Mission 3 : id가 btn_login_login인 Button을 선택해서 loginBtn에 저장하세요.
@@ -45,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
         /* todo Mission 4 : 선택해온 loginBtn에 Click Evnet를 만들어서 로그인을 진행해주세요.
         *                   로그인을 할때는 viewModel.login() 함수를 실행하면 됩니다. */
         loginBtn.setOnClickListener {
-            viewModel.login()
+            if(checkInput()) {
+                viewModel.login()
+            }
         }
 
         viewModel.state.observe(this) {

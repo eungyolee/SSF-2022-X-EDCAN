@@ -52,9 +52,9 @@ class WriteActivity : AppCompatActivity() {
         saveBtn.setOnClickListener {
             if(viewModel.content.value.isNullOrBlank()) {
                 Toast.makeText(this, "일기를 작성해주세요.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            } else {
+                viewModel.writeDiary()
             }
-            viewModel.writeDiary()
         }
 
         viewModel.state.observe(this){
@@ -69,7 +69,7 @@ class WriteActivity : AppCompatActivity() {
                 }
                 State.FAIL -> {
                     // todo Mission 8 : "일기를 작성을 실패 했어요"를 토스트 메시지로 보여주세요.
-                    Toast.makeText(this, "일기 작성에 실패했어요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "일기 작성에 실패 했어요", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -84,8 +84,7 @@ class WriteActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.menu_edcan -> {
                 // todo Special Mission : EDCAN 웹 사이트로 이동하는 코드를 작성해주세요.
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://edcan.kr"))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://edcan.kr")))
             }
         }
 
